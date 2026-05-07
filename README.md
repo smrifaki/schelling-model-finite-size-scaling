@@ -72,6 +72,12 @@ Extending the radius sweep from r=2 to r=6 (Chebyshev disks of size up to k=168 
   <img src="figures/cross_radius_alpha.png" width="85%"/>
 </p>
 
+<p align="center">
+  <img src="figures/finite_size_Tc_drift.png" width="75%"/>
+</p>
+
+A direct view of the finite-size $T_c$ drift at $U_4 = 0.5$ crossing across $L \in \{40, 80, 160\}$ for $r \in \{4, 5, 6\}$ is monotonic and has not saturated by $L=160$ — the $L=80 \to L=160$ shift is still $\sim 0.01-0.013$ at every $r$. A second-order critical transition would have $T_c(L) \to T_c^\infty$ converging on accessible $L$.
+
 The α(r=4)=+0.81 with bootstrap-disjoint CI above zero looked like super-criticality on the L ∈ {40, 80} grid. Extending to L=160 at the same T=0.347 collapses Var(S) from 0.116 (L=80) to 0.012 (L=160), giving a 3-point fit α(L=40, 80, 160) = **-1.23** — fully consistent with sub-criticality. The L=80 variance was a transient finite-size enhancement, not the start of a divergent susceptibility. A direct Binder-cumulant test at r=4 across L ∈ {40, 80, 160} corroborates: in T ∈ [0.32, 0.39], no pairwise L-curve crossing exists (L=40 vs L=80, L=40 vs L=160, L=80 vs L=160 all have no crossing in-range). All three L plateau at +2/3 (the trivial disordered limit) at high T, with each curve transitioning at a slightly different T (L=40 at T≈0.345, L=80 at T≈0.34, L=160 at T≈0.339) — a finite-size T_c drift characteristic of a smoothly-varying transition, not a critical second-order transition.
 
 <p align="center">
