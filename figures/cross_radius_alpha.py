@@ -46,6 +46,20 @@ for r in (3, 4, 5, 6):
 
 records.sort(key=lambda x: x["r"])
 
+# Pull tightened (N=200, bootstrap CI) per-radius α and overlay
+for rec in records:
+    r = rec["r"]
+    p = ROOT / f"outputs/data/r{r}_tight.npz"
+    if p.exists():
+        dt = np.load(p, allow_pickle=True)
+        rec["alpha_tight"] = float(dt["alpha_mean"])
+        rec["alpha_tight_lo"] = float(dt["alpha_lo"])
+        rec["alpha_tight_hi"] = float(dt["alpha_hi"])
+    else:
+        rec["alpha_tight"] = rec["alpha"]
+        rec["alpha_tight_lo"] = rec["alpha"]
+        rec["alpha_tight_hi"] = rec["alpha"]
+
 # Compute apples-to-apples alphas using only common L_fss = [40, 80] across all radii.
 # Some radii sampled L=20 too; drop it for fair comparison.
 def alpha_on_L(rec, L_target=(40.0, 80.0)):
@@ -70,13 +84,20 @@ alphas_4080 = [rec["alpha_L4080"] for rec in records]
 labels = [f"|F|={rec['F']}" for rec in records]
 ax.axhline(-2.0, color="#888", linestyle=":", linewidth=1.0, label=r"trivial CLT $\alpha = -2$")
 ax.axhline(0.0,  color="#aa5", linestyle=":", linewidth=1.0, label=r"critical boundary $\alpha = 0$")
-ax.plot(rs, alphas,      "o-", color="#2E5077", linewidth=1.6, markersize=10, label="α (full L grid)")
-ax.plot(rs, alphas_4080, "s--", color="#A56336", linewidth=1.2, markersize=8, label="α (L=40,80 only)")
-for r, a, lab in zip(rs, alphas, labels):
-    ax.text(r, a + 0.4, lab, ha="center", va="bottom", fontsize=9, color="#444")
+
+# Tightened (N=200, bootstrap) α with error bars where available
+alphas_tight = [rec.get("alpha_tight", rec["alpha"]) for rec in records]
+yerr_lo = [rec.get("alpha_tight", rec["alpha"]) - rec.get("alpha_tight_lo", rec["alpha"]) for rec in records]
+yerr_hi = [rec.get("alpha_tight_hi", rec["alpha"]) - rec.get("alpha_tight", rec["alpha"]) for rec in records]
+ax.errorbar(rs, alphas_tight, yerr=[yerr_lo, yerr_hi], fmt="o-", color="#2E5077",
+            linewidth=1.6, markersize=10, capsize=5, capthick=1.4,
+            label=r"$\alpha$ (N=200 trials, 95% CI)")
+for r, a, lab in zip(rs, alphas_tight, labels):
+    ax.text(r, a + 0.5, lab, ha="center", va="bottom", fontsize=8.5, color="#444")
 ax.set_xlabel("Neighborhood radius r (Chebyshev)")
 ax.set_ylabel(r"Variance scaling exponent $\alpha$")
-ax.set_title(r"Cross-radius scaling exponent $\alpha(r)$", loc="left", pad=8, fontsize=10.5)
+ax.set_title(r"Cross-radius scaling exponent $\alpha(r)$, super-critical only at r=4",
+             loc="left", pad=8, fontsize=10.5)
 ax.set_xticks(rs)
 ax.legend(loc="lower right", framealpha=0.95, fontsize=8.5)
 
