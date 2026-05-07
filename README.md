@@ -59,20 +59,20 @@ The [multiscalar dissimilarity](https://doi.org/10.1177/2399808319830645) charac
 
 Extending the radius sweep from r=2 to r=6 (Chebyshev disks of size up to k=168 neighbours, satisfaction spectrum up to |F_k|=8\,611) and probing the transition with both the variance scaling exponent α and an independent Binder-cumulant crossing test does **not** restore a phase transition. The transition becomes sharper as r grows but no critical point is identified by the model-free Binder method.
 
-| r | k neighbours | Thresholds | T_c (dS/dT) | α (N=200) | 95% CI |
+| r | k neighbours | Thresholds | T_c (dS/dT) | α(L=40,80) | α(L=40,80,160) |
 |---|---|---|---|---|---|
 | 1 (Moore) | 8 | 23 | 0.255 | -2.17 | --- |
 | 2 (Chebyshev) | 24 | 181 | 0.305 | -1.83 | --- |
-| 3 (Chebyshev) | 48 | 713 | 0.334 | -1.92 | [-2.36, -1.52] |
-| 4 (Chebyshev) | 80 | 1\,967 | 0.347 | +0.81 | [+0.50, +1.18] |
-| 5 (Chebyshev) | 120 | 4\,387 | 0.374 | -1.24 | [-2.06, -0.66] |
-| 6 (Chebyshev) | 168 | 8\,611 | 0.402 | -5.20 | [-7.04, -3.23] |
+| 3 (Chebyshev) | 48 | 713 | 0.334 | -1.92 | --- |
+| 4 (Chebyshev) | 80 | 1\,967 | 0.347 | +0.81 (artefact) | **-1.23** |
+| 5 (Chebyshev) | 120 | 4\,387 | 0.374 | -1.24 | --- |
+| 6 (Chebyshev) | 168 | 8\,611 | 0.402 | -5.20 | --- |
 
 <p align="center">
   <img src="figures/cross_radius_alpha.png" width="85%"/>
 </p>
 
-The α(r=4)=+0.81 with bootstrap-disjoint CI above zero looked like super-criticality, but a direct Binder-cumulant test at r=4 across L ∈ {40, 80} shows the L curves do **not** cross in T ∈ [0.30, 0.39] — both jump from large-negative (ordered fluctuation regime) to the trivial +2/3 disordered plateau within a narrow temperature window, but at slightly different temperatures.
+The α(r=4)=+0.81 with bootstrap-disjoint CI above zero looked like super-criticality on the L ∈ {40, 80} grid. Extending to L=160 at the same T=0.347 collapses Var(S) from 0.116 (L=80) to 0.012 (L=160), giving a 3-point fit α(L=40, 80, 160) = **-1.23** — fully consistent with sub-criticality. The L=80 variance was a transient finite-size enhancement, not the start of a divergent susceptibility. A direct Binder-cumulant test at r=4 across L ∈ {40, 80} corroborates: the L curves do **not** cross in T ∈ [0.30, 0.39] — both jump from large-negative (ordered fluctuation regime) to the trivial +2/3 disordered plateau within a narrow temperature window, but at slightly different temperatures.
 
 <p align="center">
   <img src="figures/binder_r4_crossing.png" width="65%"/>
