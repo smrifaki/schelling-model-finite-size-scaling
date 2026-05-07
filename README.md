@@ -80,7 +80,18 @@ The α(r=4)=+0.81 with bootstrap-disjoint CI above zero looked like super-critic
 
 The dS/dT-derived T_c=0.347 sits inside this window, where L=40 is still pre-transition (U_4 ≈ -0.4) while L=80 is already post-transition (U_4 ≈ +0.4). The variance comparison at this T mixes two qualitatively different physical regimes, inflating the apparent α. **The α=+0.81 finding is therefore an artefact of L-dependent transition temperatures, not a genuine super-critical signal.**
 
-The right interpretation is: as the neighbourhood grows from Moore (k=8) to dense Chebyshev (k=168), the segregation transition becomes progressively sharper but stays first-order-like. The L=80 variance collapse at r=5,6 is the deterministic-bulk regime at high k, not divergent susceptibility. **The original "Schelling is not a phase transition" verdict survives the dense-spectrum extension.** Larger lattices (L=160, 320) and per-L T_c via Binder cumulant on this extended grid would close the question definitively.
+The right interpretation is: as the neighbourhood grows from Moore (k=8) to dense Chebyshev (k=168), the segregation transition does **not** sharpen — the peak |dS/dT| measured on the coarse sweep actually decreases monotonically:
+
+| r | k | peak \|dS/dT\| |
+|---|---|---|
+| 1 | 8 | 97.5 |
+| 2 | 24 | 61.0 |
+| 3 | 48 | 57.9 |
+| 4 | 80 | 52.8 |
+| 5 | 120 | 43.5 |
+| 6 | 168 | 39.1 |
+
+A genuine phase transition would have peak |dS/dT| diverging with L (and at fixed L, becoming sharper as k increases). The opposite is observed: the transition broadens with k. Combined with the absent Binder crossings, **the original "Schelling is not a phase transition" verdict survives the dense-spectrum extension to r=6 — and is in fact strengthened**, since the dense-neighbourhood limit moves further from criticality, not closer. Larger lattices (L=160, 320) and per-L T_c via Binder cumulant on this extended grid would close the question definitively.
 
 ## Heterogeneous tolerance
 
