@@ -55,29 +55,32 @@ The transition is driven by rare large cascades in the tail. The median cascade 
 
 The [multiscalar dissimilarity](https://doi.org/10.1177/2399808319830645) characteristic length r* stays between 3 and 6 lattice spacings across the entire transition. No divergence. The domains are patchy, not fractal.
 
-## Criticality is unique to r=4 (Goldilocks zone)
+## Larger neighbourhoods do not restore criticality
 
-Extending the radius sweep from r=2 to r=6 with N=200 trials per L and bootstrap-CI on α reveals a non-monotonic structure: only r=4 is super-critical (α > 0 with disjoint 95% CI). Sub-criticality is recovered on both sides.
+Extending the radius sweep from r=2 to r=6 (Chebyshev disks of size up to k=168 neighbours, satisfaction spectrum up to |F_k|=8\,611) and probing the transition with both the variance scaling exponent α and an independent Binder-cumulant crossing test does **not** restore a phase transition. The transition becomes sharper as r grows but no critical point is identified by the model-free Binder method.
 
-| r | k neighbours | Thresholds | T_c | α (N=200) | 95% CI | Regime |
-|---|---|---|---|---|---|---|
-| 1 (Moore) | 8 | 23 | 0.255 | -2.17 | --- | sub-critical (trivial CLT) |
-| 2 (Chebyshev) | 24 | 181 | 0.305 | -1.83 | --- | sub-critical |
-| 3 (Chebyshev) | 48 | 713 | 0.334 | **-1.92** | [-2.36, -1.52] | sub-critical |
-| 4 (Chebyshev) | 80 | 1\,967 | 0.347 | **+0.81** | [+0.50, +1.18] | **super-critical (divergent susceptibility)** |
-| 5 (Chebyshev) | 120 | 4\,387 | 0.374 | **-1.24** | [-2.06, -0.66] | sub-critical |
-| 6 (Chebyshev) | 168 | 8\,611 | 0.402 | **-5.20** | [-7.04, -3.23] | very sub-critical |
-| Critical boundary | ∞ | ∞ | --- | 0 | --- | --- |
+| r | k neighbours | Thresholds | T_c (dS/dT) | α (N=200) | 95% CI |
+|---|---|---|---|---|---|
+| 1 (Moore) | 8 | 23 | 0.255 | -2.17 | --- |
+| 2 (Chebyshev) | 24 | 181 | 0.305 | -1.83 | --- |
+| 3 (Chebyshev) | 48 | 713 | 0.334 | -1.92 | [-2.36, -1.52] |
+| 4 (Chebyshev) | 80 | 1\,967 | 0.347 | +0.81 | [+0.50, +1.18] |
+| 5 (Chebyshev) | 120 | 4\,387 | 0.374 | -1.24 | [-2.06, -0.66] |
+| 6 (Chebyshev) | 168 | 8\,611 | 0.402 | -5.20 | [-7.04, -3.23] |
 
 <p align="center">
   <img src="figures/cross_radius_alpha.png" width="85%"/>
 </p>
 
-The original "no phase transition" verdict is correct for the 8-site Moore neighborhood used by Gauvin et al. As the satisfaction spectrum becomes denser (k = 8 → 24 → 48), the system stays sub-critical but α drifts toward zero. **At r=4 (k=80, |F_k|=1\,967), the system crosses into super-critical scaling: variance grows with L from 0.066 (L=40) to 0.116 (L=80), giving α=+0.81 with bootstrap-disjoint CI above zero.** This is the qualitative answer to the open question about whether criticality emerges in the dense-spectrum limit.
+The α(r=4)=+0.81 with bootstrap-disjoint CI above zero looked like super-criticality, but a direct Binder-cumulant test at r=4 across L ∈ {40, 80} shows the L curves do **not** cross in T ∈ [0.30, 0.39] — both jump from large-negative (ordered fluctuation regime) to the trivial +2/3 disordered plateau within a narrow temperature window, but at slightly different temperatures.
 
-But the picture is non-monotonic. At r=5 and r=6, α returns to negative values (-1.24 and -5.20 respectively), with the L=80 variance progressively collapsing (0.116 → 0.044 → 0.004 across r=4,5,6) while L=40 variance stays bounded. A direct diagnostic shows the high-k dynamics are highly deterministic: at L=80 the system converges to the same segregation index across random seeds (std of total moves drops from 1\,557 at r=4 to 112-155 at r=5,6). The L=80 bulk variance therefore vanishes faster than classical L\^{-2} for r ≥ 5, putting the variance estimator outside its calibrated regime.
+<p align="center">
+  <img src="figures/binder_r4_crossing.png" width="65%"/>
+</p>
 
-The honest reading is that **criticality is concentrated near r=4 with k ≈ 80 satisfying agents**, where the satisfaction spectrum has just become dense enough to break the staircase argument while the lattice (L=80) is still large compared to the neighbourhood (k=80, ratio L/k ≈ 1). For larger r the bulk dynamics dominate the L=80 estimator. Resolving the precise α(r → ∞) limit requires per-L T_c determination via Binder cumulant crossing on a larger L grid; this is a clear next step.
+The dS/dT-derived T_c=0.347 sits inside this window, where L=40 is still pre-transition (U_4 ≈ -0.4) while L=80 is already post-transition (U_4 ≈ +0.4). The variance comparison at this T mixes two qualitatively different physical regimes, inflating the apparent α. **The α=+0.81 finding is therefore an artefact of L-dependent transition temperatures, not a genuine super-critical signal.**
+
+The right interpretation is: as the neighbourhood grows from Moore (k=8) to dense Chebyshev (k=168), the segregation transition becomes progressively sharper but stays first-order-like. The L=80 variance collapse at r=5,6 is the deterministic-bulk regime at high k, not divergent susceptibility. **The original "Schelling is not a phase transition" verdict survives the dense-spectrum extension.** Larger lattices (L=160, 320) and per-L T_c via Binder cumulant on this extended grid would close the question definitively.
 
 ## Heterogeneous tolerance
 
