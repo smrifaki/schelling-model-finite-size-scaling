@@ -59,14 +59,14 @@ The [multiscalar dissimilarity](https://doi.org/10.1177/2399808319830645) charac
 
 Extending the radius sweep from r=2 to r=6 (Chebyshev disks of size up to k=168 neighbours, satisfaction spectrum up to |F_k|=8\,611) and probing the transition with both the variance scaling exponent α and an independent Binder-cumulant crossing test does **not** restore a phase transition. The transition becomes sharper as r grows but no critical point is identified by the model-free Binder method.
 
-| r | k neighbours | Thresholds | T_c (dS/dT) | α(L=40,80) | α(L=40,80,160) |
-|---|---|---|---|---|---|
-| 1 (Moore) | 8 | 23 | 0.255 | -2.17 | --- |
-| 2 (Chebyshev) | 24 | 181 | 0.305 | -1.83 | --- |
-| 3 (Chebyshev) | 48 | 713 | 0.334 | -1.92 | --- |
-| 4 (Chebyshev) | 80 | 1\,967 | 0.347 | +0.81 (artefact) | **-1.23** |
-| 5 (Chebyshev) | 120 | 4\,387 | 0.374 | -1.24 | --- |
-| 6 (Chebyshev) | 168 | 8\,611 | 0.402 | -5.20 | --- |
+| r | k neighbours | Thresholds | T_c (dS/dT) | α(L=40,80) | α(L=40,80,160) | 3-L Binder |
+|---|---|---|---|---|---|---|
+| 1 (Moore) | 8 | 23 | 0.255 | -2.17 | --- | --- |
+| 2 (Chebyshev) | 24 | 181 | 0.305 | -1.83 | --- | --- |
+| 3 (Chebyshev) | 48 | 713 | 0.334 | -1.92 | --- | --- |
+| 4 (Chebyshev) | 80 | 1\,967 | 0.347 | +0.81 (artefact) | **-1.23** | no crossing |
+| 5 (Chebyshev) | 120 | 4\,387 | 0.374 | -1.24 | **-3.74** | no crossing |
+| 6 (Chebyshev) | 168 | 8\,611 | 0.402 | -5.20 | --- | no crossing |
 
 <p align="center">
   <img src="figures/cross_radius_alpha.png" width="85%"/>
