@@ -42,6 +42,14 @@ The 3-point fit on $L \in \{40, 80, 160\}$ gives $\alpha(r{=}4) = -1.23$, fully 
 
 We compute the Binder cumulant $U_4 = 1 - \langle S^4 \rangle / 3 \langle S^2 \rangle^2$ on a $T$-grid spanning $\pm 0.045$ around each $T_c(r)$. For a critical system, $U_4(T)$ curves at different $L$ are size-independent at $T_c$ and therefore cross. Extending to $L \in \{40, 80, 160\}$ at $r = 4$ (the suspect-critical radius) with $N = 60$ trials per $(L, T)$ shows no pairwise L-curve crossings in $T \in [0.32, 0.39]$: each curve transitions at a slightly different $T$ (L = 40 at $T \approx 0.345$, L = 80 at $T \approx 0.340$, L = 160 at $T \approx 0.339$) and all three plateau at the trivial $2/3$ disordered limit at high $T$. This monotonic finite-size drift is the standard signature of a smoothly-varying non-critical transition, in direct contrast to the size-invariant crossing point that defines a second-order critical transition.
 
+The same pattern holds at $r = 5$ and $r = 6$: at every $L \in \{40, 80, 160\}$ the $U_4 = 0.5$ crossing temperature drifts monotonically downward as $L$ grows, by $\Delta T_c \in [-0.013, -0.024]$ from $L=80$ to $L=160$. A second-order critical transition would have $T_c(L) \to T_c^{\infty}$ converging on accessible $L$; here it has not converged. Per-radius $T_c$ at the $U_4 = 0.5$ crossing (Phase QBI):
+
+| $r$ | $T_c(L=40)$ | $T_c(L=80)$ | $T_c(L=160)$ | drift $L=80 \to L=160$ |
+|---|---|---|---|---|
+| 4 | 0.362 | 0.348 | 0.341 | -0.007 |
+| 5 | 0.384 | 0.362 | 0.353 | -0.009 |
+| 6 | 0.404 | 0.380 | 0.367 | -0.013 |
+
 ## Transition broadening, not sharpening
 
 The peak of $|dS/dT|$ on the coarse $T$-sweep at $L = 40$ decreases monotonically from 97.5 at $r = 1$ to 39.1 at $r = 6$. A genuine phase transition would have peak $|dS/dT|$ diverging with $L$ at fixed $r$ and becoming sharper as $r$ increases at fixed $L$. The observed monotonic decrease is the opposite signal: the dense-neighbourhood transition is broader, not sharper, than the Moore baseline.
