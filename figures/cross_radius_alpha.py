@@ -46,22 +46,39 @@ for r in (3, 4, 5, 6):
 
 records.sort(key=lambda x: x["r"])
 
+# Compute apples-to-apples alphas using only common L_fss = [40, 80] across all radii.
+# Some radii sampled L=20 too; drop it for fair comparison.
+def alpha_on_L(rec, L_target=(40.0, 80.0)):
+    L = np.array(rec["L_fss"], dtype=float)
+    V = np.array(rec["vars"])
+    mask = np.isin(L, L_target)
+    if mask.sum() < 2:
+        return rec["alpha"]
+    return float(np.polyfit(np.log(L[mask]), np.log(V[mask]), 1)[0])
+
+for rec in records:
+    rec["alpha_L4080"] = alpha_on_L(rec)
+
 # Plot α(r) with criticality threshold
 fig, axes = plt.subplots(1, 2, figsize=(11, 4.0), dpi=200)
 
-# Left: α(r)
+# Left: α(r), both full-grid and apples-to-apples [40,80] only
 ax = axes[0]
 rs = [rec["r"] for rec in records]
 alphas = [rec["alpha"] for rec in records]
+alphas_4080 = [rec["alpha_L4080"] for rec in records]
 labels = [f"|F|={rec['F']}" for rec in records]
 ax.axhline(-2.0, color="#888", linestyle=":", linewidth=1.0, label=r"trivial CLT $\alpha = -2$")
-ax.plot(rs, alphas, "o-", color="#2E5077", linewidth=1.6, markersize=10)
+ax.axhline(0.0,  color="#aa5", linestyle=":", linewidth=1.0, label=r"critical boundary $\alpha = 0$")
+ax.plot(rs, alphas,      "o-", color="#2E5077", linewidth=1.6, markersize=10, label="α (full L grid)")
+ax.plot(rs, alphas_4080, "s--", color="#A56336", linewidth=1.2, markersize=8, label="α (L=40,80 only)")
 for r, a, lab in zip(rs, alphas, labels):
-    ax.text(r, a + 0.08, lab, ha="center", va="bottom", fontsize=9, color="#444")
+    ax.text(r, a + 0.4, lab, ha="center", va="bottom", fontsize=9, color="#444")
 ax.set_xlabel("Neighborhood radius r (Chebyshev)")
 ax.set_ylabel(r"Variance scaling exponent $\alpha$")
 ax.set_title(r"Cross-radius scaling exponent $\alpha(r)$", loc="left", pad=8, fontsize=10.5)
 ax.set_xticks(rs)
+ax.legend(loc="lower right", framealpha=0.95, fontsize=8.5)
 
 # Right: log-log Var(L) per radius
 ax = axes[1]
