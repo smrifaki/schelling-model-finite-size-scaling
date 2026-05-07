@@ -96,8 +96,8 @@ for r, a, lab in zip(rs, alphas_tight, labels):
     ax.text(r, a + 0.5, lab, ha="center", va="bottom", fontsize=8.5, color="#444")
 ax.set_xlabel("Neighborhood radius r (Chebyshev)")
 ax.set_ylabel(r"Variance scaling exponent $\alpha$")
-ax.set_title(r"Cross-radius scaling exponent $\alpha(r)$, super-critical only at r=4",
-             loc="left", pad=8, fontsize=10.5)
+ax.set_title(r"Cross-radius scaling exponent $\alpha(r)$, dS/dT-T$_c$ estimator (Binder refutes apparent r=4 peak)",
+             loc="left", pad=8, fontsize=10)
 ax.set_xticks(rs)
 ax.legend(loc="lower right", framealpha=0.95, fontsize=8.5)
 
