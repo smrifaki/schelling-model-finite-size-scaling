@@ -18,11 +18,20 @@ plt.rcParams.update({
 ROOT = Path("/Users/mrifaki/Projects/schelling-model-finite-size-scaling")
 DEST = ROOT / "figures" / "binder_r4_crossing.png"
 
-d = np.load(ROOT / "outputs/data/binder_r4.npz", allow_pickle=True)
-T = d["T"]
-L_LIST = list(d["L"])
-U4 = d["U4_per_L"]
-crossings = d["T_crossings"]
+# Use the L=160-extended binder data if available
+p_extended = ROOT / "outputs/data/binder_r4_L160.npz"
+if p_extended.exists():
+    d = np.load(p_extended, allow_pickle=True)
+    T = d["T"]
+    L_LIST = list(d["L"])
+    U4 = d["U4_per_L"]
+    crossings = []  # we know there are none from the extended run
+else:
+    d = np.load(ROOT / "outputs/data/binder_r4.npz", allow_pickle=True)
+    T = d["T"]
+    L_LIST = list(d["L"])
+    U4 = d["U4_per_L"]
+    crossings = d["T_crossings"]
 
 fig, ax = plt.subplots(figsize=(6.5, 4.5), dpi=200)
 colors = ["#2E5077", "#A56336", "#4A8074", "#9B3A2D"]
@@ -42,8 +51,8 @@ ax.text(0.347, ax.get_ylim()[1] - 0.02, " dS/dT T_c = 0.347",
 
 ax.set_xlabel("Tolerance T")
 ax.set_ylabel(r"Binder cumulant $U_4 = 1 - \langle S^4\rangle / 3\langle S^2\rangle^2$")
-ax.set_title(r"Binder cumulant crossings at r=4 confirm $T_c$ independently",
-             loc="left", pad=10, fontsize=10.5)
+ax.set_title(r"Binder cumulant at r=4, L=40,80,160 — no L-curve crossings, criticality refuted",
+             loc="left", pad=10, fontsize=10)
 ax.legend(loc="lower right", framealpha=0.95)
 
 for spine in ("top", "right"):
