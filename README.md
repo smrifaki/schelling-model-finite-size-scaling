@@ -55,23 +55,27 @@ The transition is driven by rare large cascades in the tail. The median cascade 
 
 The [multiscalar dissimilarity](https://doi.org/10.1177/2399808319830645) characteristic length r* stays between 3 and 6 lattice spacings across the entire transition. No divergence. The domains are patchy, not fractal.
 
-## Criticality emerges for radius ≥ 4
+## Criticality emerges for radius ≥ 3-4
 
-Extending the radius sweep from r=2 to r=4 answers the question: yes, the variance scaling exponent crosses the critical boundary between r=3 and r=4 and the transition becomes super-critical (variance grows with L) at r=4.
+Extending the radius sweep from r=2 to r=6 shows the variance scaling exponent crosses the critical boundary between r=3 and r=4. Beyond r=4 the equilibrium estimator becomes unreliable (see caveat below), but the qualitative emergence of criticality is robust.
 
-| | k neighbours | Thresholds | Exponent α | Regime |
-|---|---|---|---|---|
-| Radius 1 (Moore) | 8 | 23 | **-2.17** | sub-critical (trivial CLT averaging) |
-| Radius 2 (Chebyshev) | 24 | 181 | **-1.83** | sub-critical |
-| Radius 3 (Chebyshev) | 48 | 713 | **-0.65** | transition zone |
-| Radius 4 (Chebyshev) | 80 | 1\,967 | **+2.74** | super-critical (divergent susceptibility) |
-| Critical boundary | ∞ | ∞ | 0 | --- |
+| r | k neighbours | Thresholds | T_c | Exponent α | Regime |
+|---|---|---|---|---|---|
+| 1 (Moore) | 8 | 23 | 0.255 | **-2.17** | sub-critical (trivial CLT averaging) |
+| 2 (Chebyshev) | 24 | 181 | 0.305 | **-1.83** | sub-critical |
+| 3 (Chebyshev) | 48 | 713 | 0.334 | **-0.65** | transition zone |
+| 4 (Chebyshev) | 80 | 1\,967 | 0.347 | **+2.74** | super-critical (divergent susceptibility) |
+| 5 (Chebyshev) | 120 | 4\,387 | 0.374 | -6.87 | frozen-equilibrium artefact |
+| 6 (Chebyshev) | 168 | 8\,611 | 0.402 | -6.14 | frozen-equilibrium artefact |
+| Critical boundary | ∞ | ∞ | --- | 0 | --- |
 
 <p align="center">
   <img src="figures/cross_radius_alpha.png" width="85%"/>
 </p>
 
-The original "no phase transition" verdict is correct for the 8-site Moore neighborhood used by Gauvin et al., but is an artefact of the staircase: |F_k| = 23 distinct satisfaction thresholds pin the system in the sub-critical regime. As the satisfaction spectrum becomes dense (k ≥ 80, |F_k| ≥ 2\,000), the staircase argument no longer applies and a genuine phase transition emerges. r=4 variances at L = 20, 40, 80 are 0.003, 0.080, 0.115, with the L=20 → L=40 jump consistent with crossing the correlation length and the L=40 → L=80 plateau consistent with critical fluctuations. The per-radius critical temperature also drifts upward (T_c = 0.255 → 0.305 → 0.334 → 0.347), tracking the denser neighborhoods.
+The original "no phase transition" verdict is correct for the 8-site Moore neighborhood used by Gauvin et al., but is an artefact of the staircase: |F_k| = 23 distinct satisfaction thresholds pin the system in the sub-critical regime. As the satisfaction spectrum becomes dense (k ≥ 80, |F_k| ≥ 2\,000), the staircase argument no longer applies and a genuine phase transition emerges between r=3 and r=4. The per-radius critical temperature drifts upward monotonically (T_c = 0.255 → 0.305 → 0.334 → 0.347 → 0.374 → 0.402), tracking the denser neighbourhoods.
+
+**Caveat for r ≥ 5.** At high k the equilibrium variance estimator at the L=40-determined T_c collapses for L=80, giving artificially negative α. Mechanism: with k ≥ 120, random initialisation already satisfies most agents (a 50/50 mix gives ≈ 50% same-type neighbours, exceeding T<0.5), so the dynamics freeze near the initial configuration before fluctuations can develop. Resolving the precise α(r) for r ≥ 5 requires per-L T_c determination via Binder cumulant crossing or a non-equilibrium dynamic diagnostic.
 
 ## Heterogeneous tolerance
 
